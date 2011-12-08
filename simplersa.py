@@ -3,7 +3,7 @@ import os
 import re
 from base64 import b64encode, b64decode
 
-# probably for the current user, who has both a private and a public key
+# this is your keypair, private and public
 class RSAKeypair:
 
     def __init__(self, m2crypto_keypair=None, public_pem=None, private_pem=None):
@@ -64,9 +64,15 @@ class RSAKeypair:
 
     def decrypt(self, message):
         return self._m2crypto_keypair.private_decrypt(message, M2Crypto.RSA.pkcs1_oaep_padding)
+
+    def generate_signature(self, encrypted_message):
+        message_digest = M2Crypto.EVP.MessageDigest ('sha1')
+        message_digest.update (encrypted_message)
+
+        return self._m2crypto_keypair.sign_rsassa_pss (message_digest.digest())
         
 
-# probably for other users, if you only have their public key
+# use this for another user you'd be interacting with (someone who's public key you'd have)
 class RSAPublicKey:
     
     def __init__(self, m2crypto_key=None):
@@ -105,6 +111,13 @@ class RSAPublicKey:
 
     def pem(self):
         return self.__public_bio().read_all()
+
+    def verify_signature(self, encrypted_message, signature):
+        message_digest = M2Crypto.EVP.MessageDigest ('sha1')
+        message_digest.update(encrypted_message)
+        
+        return (self._m2crypto_key.verify_rsassa_pss (message_digest.digest(), signature) == 1)
+        
         
         
 
@@ -115,3 +128,4 @@ def rand_seed():
 # that prompts for a password
 def empty_callback(unused_arg=None):
     pass
+
