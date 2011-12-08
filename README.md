@@ -67,4 +67,4 @@ and use Macho Man's public key to verify the signature
 	  >>> macho_man_public_key.verify_signature(encrypted_message, signature)
 	  True
 
-RSAPublicKey also has a couple of instance methods for things like loading from disk (*load(filename)*), saving to disk (*save(filename)*, which will save filename and filename.pub), and class methods for things like loading from a pem string (from_pem()).  
+RSAPublicKey also has a couple of instance methods for things like loading from disk (**load(filename)**), saving to disk (**save(filename)**, which will save filename and filename.pub), and class methods for things like loading from a pem string (**from_pem(pem_string)**).  
