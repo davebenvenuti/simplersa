@@ -14,7 +14,7 @@ class RSAKeypair:
 
     @classmethod
     def generate(cls, size=4096):
-        rand_seed()
+        rand_seed(size)
 
         # 65537 is a good exponent to use according to wikipedia
         new_key = M2Crypto.RSA.gen_key (size, 65537, empty_callback)
@@ -121,8 +121,8 @@ class RSAPublicKey:
         
         
 
-def rand_seed():
-    M2Crypto.Rand.rand_seed (os.urandom (1024))
+def rand_seed(size):
+    M2Crypto.Rand.rand_seed (os.urandom (size))
 
 # needed to override the stupid default callback M2Crypto uses for key generation
 # that prompts for a password
