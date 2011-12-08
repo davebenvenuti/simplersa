@@ -6,7 +6,7 @@ from base64 import b64encode, b64decode
 # this is your keypair, private and public
 class RSAKeypair:
 
-    # don't initialize directory.  use one of the class factory methods
+    # don't initialize directly. instead use one of the class factory methods
     def __init__(self, m2crypto_keypair=None, public_pem=None, private_pem=None):
         self._m2crypto_keypair = None
 
