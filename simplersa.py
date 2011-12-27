@@ -100,9 +100,7 @@ class RSAPublicKey:
 
         return RSAPublicKey(m2crypto_key=M2Crypto.RSA.load_pub_key_bio(bio))
 
-    def encrypt(self, message, base64_encode=False):
-        rand_seed()
-
+    def encrypt(self, message):
         return self._m2crypto_key.public_encrypt(message, M2Crypto.RSA.pkcs1_oaep_padding)
 
     def __public_bio(self):
