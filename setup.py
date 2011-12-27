@@ -1,6 +1,6 @@
 from distutils.core import setup
 setup(name='simplersa',
-      version='0.1',
+      version='0.1.1',
       py_modules=['simplersa'],
       author='Dave Benvenuti',
       author_email='davebenvenuti@gmail.com',
