@@ -1,6 +1,16 @@
 simplersa
 =========
 
+# Installation
+
+simplersa is available on the Python Package Index [https://pypi.python.org/pypi/simplersa](https://pypi.python.org/pypi/simplersa)
+
+```
+> pip install simplersa
+```
+
+# Description/Usage
+
 simplersa is a simple wrapper for M2Crypto designed to make basic encryption functionality, namely, key generation, encrypt, decrypt, signature generation, and signature verification, a little more straightforward.  An example:
 
 	  Python 2.7.2 (default, Nov 21 2011, 17:25:27) 
